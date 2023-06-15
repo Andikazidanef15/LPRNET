@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import os
 import random
+import glob
 from data_aug import data_augmentation
 # import gen_plates as gen
 
@@ -55,7 +56,9 @@ class DataIterator:
     def init(self):
         self.filenames = []
         self.labels = []
-        fs = os.listdir(self.img_dir)
+        # Only find jpg files, sometimes in colab it includes the ipynb file 
+        fs = glob.glob(self.img_dir + '/*.jpg')
+        fs = [image.split('/')[-1] for image in fs]
         for filename in fs:
             self.filenames.append(filename)
             label = filename.split('_')[0] # format: [label]_[random number].jpg
