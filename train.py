@@ -57,9 +57,9 @@ def train():
 
 	#initialize the learning rate
 	learning_rate = keras.optimizers.schedules.ExponentialDecay(args["lr"],
-															decay_steps=args["decay_steps"],
-															decay_rate=args["decay_rate"],
-															staircase=args["staircase"])
+								    decay_steps=args["decay_steps"],
+								    decay_rate=args["decay_rate"],
+								    staircase=args["staircase"])
 
 	#define training optimizer 
 	optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
@@ -101,7 +101,7 @@ def train():
 				timesteps = logits_shape[1]
 				seq_len = tf.fill([cur_batch_size],timesteps)
 				logits = tf.transpose(logits,(1,0,2))
-				ctc_loss = tf.nn.ctc_loss(labels = train_targets, inputs = logits, sequence_length = seq_len)
+				ctc_loss = tf.compat.v1.nn.ctc_loss(labels = train_targets, inputs = logits, sequence_length = seq_len)
 				loss_value =tf.reduce_mean(ctc_loss)
 
 
