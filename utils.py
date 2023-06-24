@@ -89,7 +89,7 @@ class DataIterator:
             sample_ind = self.next_sample_ind()
             fname = self.filenames[sample_ind]
             img = cv2.imread(os.path.join(self.img_dir, fname))
-            #img = data_augmentation(img)
+            img = data_augmentation(img)
             img = cv2.resize(img, (self.img_w, self.img_h)) 
             images[i] = img
 
