@@ -136,7 +136,7 @@ class DataIterator:
 
         images = np.zeros([batch_size, self.img_h, self.img_w, self.channel_num])
         for i, img in enumerate(imgs):
-            img = data_augmentation(img)
+            #img = data_augmentation(img)
             img = cv2.resize(img, (self.img_w, self.img_h))
             images[i, ...] = img
 
