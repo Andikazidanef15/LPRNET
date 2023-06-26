@@ -57,7 +57,7 @@ class DataIterator:
         self.filenames = []
         self.labels = []
         # Only find jpg files, sometimes in colab it includes the ipynb file 
-        fs = glob.glob(self.img_dir + '/*.jpg')
+        fs = glob.glob(self.img_dir + '/*.png')
         fs = [image.split('/')[-1] for image in fs]
         for filename in fs:
             self.filenames.append(filename)
